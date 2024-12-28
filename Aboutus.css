@@ -1,0 +1,221 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f4f4f9;
+}
+
+/* Container */
+.container {
+    width: 80%;
+    margin: -5px auto;
+    flex-grow: 1;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(180deg, black, #053363, black);
+    height: 80px;
+    padding: 20px 0;
+    color: #fff;
+    z-index: 1000;
+}
+
+/* Logo */
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+    padding-left: 80px;
+    text-decoration: none;    
+}
+
+.logo::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background-image: url("In Libris library logo.png");
+    background-size: cover;
+    background-position: center;
+}
+
+/* Navbar Links */
+.nav-links {
+    list-style: none;
+    float: right;
+}
+
+.nav-links li {
+    display: inline-block;
+    margin-left: 20px;
+    background-color: transparent;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 650;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.nav-links a:hover {
+    background-color: #f0af23c2;
+    color: white;
+}
+
+/* Background */
+#bg-collage {
+    background-image: url("b3.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding: 100px 20px;
+    position: relative;
+}
+
+#bg-collage:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.479);
+    z-index: 1;
+}
+
+/* Main Content */
+.cover {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: white;
+    width: 100%;
+    font-size: 15px;
+}
+
+/* Mission and Vision Section */
+.mission-vision-section {
+    flex: 0 0 45%;
+    background: linear-gradient(180deg, #000, #053363, #053363);
+    padding: 40px;
+    border: 2px solid #053363;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin-top: -400px; /* Reduced margin */
+    font-size: 15px;
+}
+.About {
+    background: linear-gradient(180deg, #000, #053363, #053363);
+    padding: 40px;
+    border: 2px solid #053363;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin-top: -550px; /* Reduced margin */
+    margin-left: 520px;
+    z-index: 2;
+    font-size: 15px;
+    color: white;
+}
+
+
+/* Footer */
+footer {
+    background: linear-gradient(180deg, black, #053363, black);
+    color: #fff;
+    padding: 20px 0;
+    width: 100%;
+    margin-top: auto;
+    clear: both;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.footer-section {
+    flex: 1;
+    text-align: center;
+}
+
+#hours {
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#social-media {
+    text-align: right;
+}
+
+.footer-section img:hover {
+    filter: sepia(100%) hue-rotate(100deg) saturate(500%);
+}
+
+.footer-section a img {
+    width: 30px;
+    height: 30px;
+    margin: 5px 0;
+    border-radius: 10px;
+    transition: filter 0.8s ease;
+}
+
+.footer-section h3 {
+    margin-bottom: 8px;
+    font-size: 1.2em;
+}
+
+.footer-section p, .footer-section a {
+    font-size: 0.9em;
+    color: #ccc;
+}

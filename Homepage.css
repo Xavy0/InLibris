@@ -1,0 +1,607 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+/* Container */
+.container {
+    width: 80%;
+    margin: -5px auto;
+    flex-grow: 1;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed; /* Makes the navbar fixed at the top */
+    top: 0; /* Aligns it at the top of the page */
+    left: 0; /* Aligns it with the left edge */
+    width: 100%; /* Spans the full width of the page */
+    background: linear-gradient(180deg, black, #053363, black); /* Gradient text effect */
+    height: 80px;
+    padding: 20px 0;
+    color: #fff;
+    z-index: 1000; /* Ensures it stays above other elements */
+}
+
+/* Add padding to body or main content to avoid overlapping with fixed navbar */
+body {
+    padding-top: 100px; /* Adjusts space to account for fixed navbar height */
+}
+
+/* Logo */
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    position: relative; /* Required for absolute positioning of the pseudo-element */
+    padding-left: 80px; /* Adjust padding to make space for the logo */
+    text-decoration: none;    
+}
+
+.logo::before {
+    content: "";
+    display: block;
+    position: absolute; /* Position the image absolutely within the logo */
+    left: 10px; /* Adjust position from the left */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust to center */
+    width: 60px; /* Set width of the logo */
+    height: 60px; /* Set height of the logo */
+    background-image: url("In Libris library logo.png"); /* Logo image path */
+    background-size: cover; /* Cover the area without distorting the image */
+    background-position: center; /* Center the image */
+}
+
+/* Navbar Links */
+.nav-links {
+    list-style: none;
+    float: right;
+}
+
+.nav-links li {
+    display: inline-block;
+    margin-left: 20px;
+    background-color: transparent;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 650;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.nav-links a:hover {
+    background-color: #f0af23c2;
+    color: white;
+}
+
+
+
+
+
+@media (max-width: 480px) {
+    .home-text h1 {
+        font-size: 2.5rem; /* Decrease font size for mobile */
+    }
+
+    .home-text p {
+        font-size: 1rem; /* Decrease font size for better fit */
+    }
+
+    .home-btn {
+        font-size: 1rem; /* Smaller button font size */
+        padding: 10px 20px; /* Adjust button padding */
+    }
+}
+
+/* Enhanced Collections Section */
+.collections-section {
+    background-color: white;
+    padding: 80px 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-top: -35px;
+}
+
+.collections-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #053363;
+    font-weight: bold;
+}
+
+.collections-section p {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.box {
+    display: inline-block;
+    margin: 20px;
+    text-align: center;
+    position: relative;
+    width: 180px; /* Adjust width for better sizing */
+}
+
+.container-img {
+    position: relative;
+    width: 140px;
+    height: 140px; /* Ensures consistent size for all images */
+    margin: 0 auto;
+}
+
+.gif-icon {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transition: opacity 0.3s ease;
+}
+
+.static-icon {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #053363;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover .gif-icon {
+    display: block;
+    z-index: 1;
+    opacity: 1;
+}
+
+.box:hover .static-icon {
+    transform: scale(1.1);
+    opacity: 0;
+    z-index: 0;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    background-color: #053363;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .box {
+        width: 150px;
+    }
+    .container-img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+
+/* Home Section */
+.home {
+    position: relative;
+    width: 100%;
+    height: 65vh; 
+    background-size: cover; 
+    background-position: center center;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+    z-index: 1;
+    margin-top: -75px;
+    animation: changeBg 12s infinite ease-in-out; 
+}
+.home-text {
+    margin-left: 250px;
+}
+.home-text h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    color: #fff;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    transition: color 0.4s ease;
+}
+
+.home-text h1:hover {
+    color: #fff;
+}
+
+.home-text p {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 50px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    transition: color 0.4s ease;
+}
+
+.home-text p:hover {
+    color: #fff;
+}
+
+.home-btn {
+    display: inline-block;
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    background: linear-gradient(90deg, #053363, black);
+    color: #ffffff;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background 0.4s ease, transform 0.3s ease, border 0.3s ease;
+    text-decoration: none;
+}
+
+.home-btn:hover {
+    background: #fff;
+    color: black;
+    border: 2px solid black;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+/* Background images transition */
+@keyframes changeBg {
+    0% { background-image: url('bg1.jpg'); }
+    25% { background-image: url('bg1.jpg'); } 
+    33% { background-image: url('bg2.jpg'); }
+    58% { background-image: url('bg2.jpg'); }
+    66% { background-image: url('b3.jpg'); }
+    78% { background-image: url('b3.jpg'); } 
+    89% { background-image: url('b4.jpg'); } 
+    100% { background-image: url('b4.jpg'); } 
+}
+
+/* Catalog Section */
+.collections-section {
+    text-align: center;
+}
+
+.collections-section h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.book-slider-container {
+    border: 4px solid #053363;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    margin: auto;
+    background-image: url("book.jpg");
+}
+
+.book-slider {
+    
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+}
+
+.book-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.book {
+    flex: 0 0 200px;
+    margin: 10px;
+    text-align: center;
+}
+
+.book img {
+    width: 100%;
+    height: auto;
+}
+
+.read-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #053363;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.read-btn:hover {
+    background-color: #000;
+    transform: scale(1.05);
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 18px;
+    z-index: 10;
+}
+
+.left-arrow {
+    left: 10px;
+}
+
+.right-arrow {
+    right: 10px;
+}
+
+/* Style for the slider container */
+.img-slider {
+    position: relative;
+    width: 80%; /* Full width */
+    max-width: 1300px; /* Set a max-width for the container */
+    margin: 0 auto;
+    overflow: hidden; /* Hide anything that overflows */
+    height: 750px; /* Fixed height for the images */
+    border-radius: 15px; /* Rounded corners for a softer look */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    background-color: #fff; /* White background for the container */
+    padding: 10px; /* Adds padding inside the container */
+}
+
+/* Style for the images container */
+.slides {
+    display: flex; /* Align the slides horizontally */
+    transition: transform 0.5s ease; /* Smooth transition for sliding */
+}
+
+/* Style for individual slide */
+.slide {
+    min-width: 100%; /* Ensure each image takes up 100% of the container */
+    box-sizing: border-box;
+}
+
+/* Style for images */
+img {
+    width: 100%; /* Stretch image to fill container width */
+    height: 100%; /* Stretch image to fill container height */
+    object-fit: cover; /* Ensure images cover the container without distortion */
+    border-radius: 10px; /* Slightly round the image corners */
+}
+
+/* Button styles for the left and right arrows */
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%; /* Circular buttons for a modern look */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow to buttons */
+}
+
+/* Position left arrow */
+.prev {
+    left: 10px;
+}
+
+/* Position right arrow */
+.next {
+    right: 10px;
+}
+
+/* Style for image slider caption */
+#imgslide {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 50px; /* Pushes footer to the end of the page content */
+    margin-bottom: 30px; /* Pushes footer to the end of the page content */
+    color: #053363;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 600px) {
+    .img-slider {
+        max-width: 100%;
+        height: 300px; /* Adjust the height for smaller screens */
+        border-radius: 10px; /* Rounded corners for mobile */
+    }
+}
+
+/* Pause the slider on hover */
+.img-slider:hover .slides {
+    animation-play-state: paused;
+}
+
+/* Services container with better design */
+#srv-cont {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+    margin-top: 2rem;
+    color: white;
+    padding: 2rem; /* Add padding around the container */
+
+}
+
+/* Individual service box styling */
+.srv-box {
+    background-color: #ffffff; /* White background for the box */
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 70%;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: auto;
+}
+
+.srv-box:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Enhance shadow effect on hover */
+}
+
+/* Service image styling */
+.srv-img {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gif {
+    max-width: 100px;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.srv-card:hover .gif {
+    transform: scale(1.3);
+}
+
+/* Service title styling */
+.srv-box h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #053363; /* Dark blue color for title */
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+/* Service description styling */
+.srv-box p {
+    font-size: 1rem;
+    color: #555555; /* Dark gray for text */
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-family: Arial, sans-serif;
+}
+
+/* Button styling */
+.btn-more {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+    display: inline-block;
+    font-size: 1rem;
+}
+
+.btn-more:hover {
+    background-color: #0056b3;
+}
+
+
+/* Footer styling to keep it at the bottom of the page */
+footer {
+    background: linear-gradient(180deg, black, #053363, black); /* Gradient text effect */
+    color: #fff;
+    padding: 20px 0;
+    width: 100%;
+    margin-top: 5%; /* Pushes footer to the end of the page content */
+    clear: both;
+    
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.footer-section {
+  flex: 1;
+  text-align: center;
+}
+
+#hours {
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  
+}
+
+#social-media {
+  text-align: right;
+  
+  
+}
+.footer-section img:hover {
+   filter: sepia(100%) hue-rotate(100deg) saturate(500%); 
+}
+.footer-section a img {
+   width: 30px; 
+    height: 30px; 
+    margin: 5px 0; 
+   border-radius:10px;
+   transition: filter 0.8s ease;
+
+}
+
+.footer-section h3 {
+  margin-bottom: 8px;
+  font-size: 1.2em;
+}
+
+.footer-section p, .footer-section a {
+  font-size: 0.9em;
+  color: #ccc;
+}
